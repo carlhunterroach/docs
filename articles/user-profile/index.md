@@ -29,7 +29,7 @@ Following are topics which will help us gain a better understanding of the User 
 
 ## Sources of User Profile Data
 
-As implied above, User Profile attributes may come from multiple sources.  A core set of attributes will come from the service that authenticates a user.  The authentication service might be a social provider such as Facebook or LinkedIn.  Alternatively, the authentication service might be an enterprise provider, such as Active Directory, ADFS or a SAML-compliant authentication service operated by a business or other organization.  In such a case, the user is typically acting on behalf of the business or organization and the business is the authoritative source of information for the profile data.  Additional types of authentication services are custom databases, web services and the database that is included as part of the Auth0 service.  In general, these authentication services are also called providers, authentication providers or identity providers (often referred to as IDP's).  In the context of the Auth0, they are called **Connections** because Auth0 connects to them to authenticate a user.
+As implied above, User Profile attributes may come from multiple sources.  A core set of attributes will come from the service that authenticates a user.  The authentication service might be a social provider such as Facebook or LinkedIn.  Alternatively, the authentication service might be an enterprise provider, such as Active Directory, ADFS or a SAML-compliant authentication service operated by a business or other organization.  In such a case, the user is typically acting on behalf of the business or organization and the business is the authoritative source of information for the profile data.  Additional types of authentication services are custom databases, web services and the database that is included as part of the Auth0 service.  In general, these authentication services are also called providers, authentication providers or identity providers (often referred to as IDPs).  In the context of the Auth0, they are called **Connections** because Auth0 connects to them to authenticate a user.
 
 ## Normalized User Profile
 
@@ -61,7 +61,7 @@ Auth0 provides a [JS widget](https://github.com/auth0/auth0-editprofile-widget) 
 
 ## Application Access to User Profile
 
-The User Profile will generally be provided to a client application once authentication is complete and control is returned to the app. At a low level this can be accomplished using one of the [application protocols](/protocols) supported by Auth0. However, most developers prefer to leverage the Auth0 SDK's that are available for the most popular platforms and languages.
+The User Profile will generally be provided to a client application once authentication is complete and control is returned to the app. At a low level this can be accomplished using one of the [application protocols](/protocols) supported by Auth0. However, most developers prefer to leverage the Auth0 SDKs that are available for the most popular platforms and languages.
 
 Perhaps the most popular SDK is the Auth0 Lock widget, which varies depending on the type of client application:
 
@@ -71,7 +71,7 @@ Perhaps the most popular SDK is the Auth0 Lock widget, which varies depending on
 
 Alternatively, if web applications desire to build their own login UI, they can use [auth0.js](/libraries/auth0js), a headless JavaScript library for Auth0, which can invoke authentication flow (as well as other tasks) and ultimately receive a User Profile object in return.
 
-Similar SDK's exist for many other platforms.  See the [Quickstarts](/) for more information.
+Similar SDKs exist for many other platforms.  See the [Quickstarts](/) for more information.
 
 ## API Access to User Profiles
 
@@ -81,13 +81,13 @@ There is an [API Explorer](/api/v2) that allows users to interactively explore t
 
 There is an [older version of the API](/api/v1) (v1) that is still being used by some customers today.  However, it is recommended that customers migrate to v2 (the current version), since future support for v1 will be limited.  If you're using v1 and would like to see the differences between the two version, see the [API v1 vs v2](/api/v2/changes) article.
 
-Finally, there is an API specifically used for authentication flows. The documentation for these authentication API calls can be found [here](/auth-api).  Most of these endpoints are used by the various Auth0 SDK's and typically not your own code.  However, one endpoint that is particularly important for User Profile is [`/userinfo`](/auth-api#!#get--userinfo), which  will be discussed later in this article.
+Finally, there is an API specifically used for authentication flows. The documentation for these authentication API calls can be found [here](/auth-api).  Most of these endpoints are used by the various Auth0 SDKs and typically not your own code.  However, one endpoint that is particularly important for User Profile is [`/userinfo`](/auth-api#!#get--userinfo), which  will be discussed later in this article.
 
 ## User Profile vs Tokens
 
 In the authentication flows described above, a full User Profile is not returned directly. Rather Auth0 generates a set of tokens.
 
-Perhaps the most well known token is the `id_token`, which is a [JSON Web Token](/jwt) (or JWT) that contains User Profile attributes represented in the form of *claims*. These claims are statements about the user, which can be trusted if the consumer of the token can verify its signature (which was generated with the Auth0 app's Client Secret). The app can then use the JWT to securely call other API's as long as those API's can verify the JWT's signature, and trust and use the contained claims.
+Perhaps the most well known token is the `id_token`, which is a [JSON Web Token](/jwt) (or JWT) that contains User Profile attributes represented in the form of *claims*. These claims are statements about the user, which can be trusted if the consumer of the token can verify its signature (which was generated with the Auth0 app's Client Secret). The app can then use the JWT to securely call other API's as long as those APIs can verify the JWT's signature, and trust and use the contained claims.
 
 The claims within a JWT can contain all of the properties of the User Profile. But more often they contain a subset of them in order to minimize the overall size. For further information on controlling the claims returned in a JWT see the [Scopes](#scopes) section below.
 
